@@ -1,12 +1,17 @@
 $(function() {
+  var vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "y"]
   $("#form").submit(function(event) {
     event.preventDefault();
     var userInput = $("#puzzle").val();
     var userArray = userInput.split("");
-    var vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U", "y"]
-    for (var index = 0; index < userArray.length; index += 1) {
-      console.log(userArray[index]);
-      alert("Look at" + userArray[index]);
-    }
+    for (var i = 0; i < userArray.length; i++) {
+      for (var j = 0; j < vowels.length; j++) {
+       if (userArray[i] === vowels[j]) {
+         userArray[i] = "-";
+        }
+      }
+     }
+     var output = userArray.join("");
+     $("#output").text(output);
   });
 });
